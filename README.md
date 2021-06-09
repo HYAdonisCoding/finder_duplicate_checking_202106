@@ -1,0 +1,2 @@
+# finder_duplicate_checking_202106
+finder_duplicate_checking_project.
