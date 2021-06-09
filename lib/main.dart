@@ -48,7 +48,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  void _chooseTargetFloder() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -57,6 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+
+  void _checkAction() {
+    print(_checkAction);
   }
 
   @override
@@ -77,24 +81,75 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
             Text(
-              'You have pushed the button this many times:',
+              'Finds all duplicate files which have the same names',
+              textAlign: TextAlign.center,
+            ),
+            OutlineButton(
+              onPressed: _chooseTargetFloder,
+              child: Text("Please choose a target floder"), // Icon(Icons.attach_file),
+            ),
+            OutlineButton(
+              onPressed: _checkAction,
+              child: Text("check"),
+            ),
+            Text(
+              'Exculded paths:',
+              style: Theme.of(context).textTheme.button,
+              textAlign: TextAlign.left,
+            ),
+
+            /// path list
+            /// add
+            Row(
+              children: [
+                FloatingActionButton(
+                  onPressed: _checkAction,
+                  tooltip: 'Increment',
+                  child: Icon(Icons.add),
+                ),
+                FloatingActionButton(
+                  onPressed: _checkAction,
+                  tooltip: 'Increment',
+                  child: Icon(Icons.remove),
+                ),
+              ],
+            ),
+            Text(
+              'Exculded names:',
+              style: Theme.of(context).textTheme.button,
+              textAlign: TextAlign.left,
+            ),
+
+            /// name list
+            /// add
+            /// 输入框
+            TextFormField(
+              decoration: const InputDecoration(
+                hintText: 'Enter your file name and extension.',
+              ),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter file name and extension.';
+                }
+                return null;
+              },
+            ),
+            Row(
+              children: [
+                FloatingActionButton(
+                  onPressed: _checkAction,
+                  tooltip: 'Increment',
+                  child: Icon(Icons.add),
+                ),
+                FloatingActionButton(
+                  onPressed: _checkAction,
+                  tooltip: 'Increment',
+                  child: Icon(Icons.remove),
+                ),
+              ],
             ),
             Text(
               '$_counter',
@@ -104,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _chooseTargetFloder,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
