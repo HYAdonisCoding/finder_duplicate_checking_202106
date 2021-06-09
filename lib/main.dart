@@ -1,3 +1,4 @@
+import 'package:finder_duplicate_checking_202106/fileList.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -49,14 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _chooseTargetFloder() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+    Navigator.push(context,new  MaterialPageRoute(
+              builder:(context) =>new FileList())
+            );
   }
 
   void _checkAction() {
@@ -89,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             OutlineButton(
               onPressed: _chooseTargetFloder,
-              child: Text("Please choose a target floder"), // Icon(Icons.attach_file),
+              child: Text(
+                  "Please choose a target floder"), // Icon(Icons.attach_file),
             ),
             OutlineButton(
               onPressed: _checkAction,
