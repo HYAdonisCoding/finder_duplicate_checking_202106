@@ -1,4 +1,4 @@
-import 'package:finder_duplicate_checking_202106/fileList.dart';
+import 'package:finder_duplicate_checking_202106/pages/fileList_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
