@@ -27,20 +27,38 @@ class FileListPage extends StatefulWidget {
 }
 
 class _FileListPageState extends State<FileListPage> {
-  Future<File> _getLocalFile() async {
+  Future<String> _getLocalFile(String dirString) async {
     // get the path to the document directory.
+    /// 获取根地址
     String dir = (await getApplicationDocumentsDirectory()).path;
-    return new File('$dir/counter.txt');
+    if (dirString.isEmpty) {
+      /// 获取当前文件夹
+      rootDir = dir;
+      // /Users/adam/Library/Developer/CoreSimulator/Devices/1DD5EEEB-FE49-43A5-858C-B614B5B1C6C6/data/Containers/Data/Application/79F4ECCB-1E32-4C0B-BAA0-D255BE9439A6/Documents
+      // 截取最后文件夹的名称
+      List strs = dir.split("/");
+      fileList = [strs.last];
+    } else {
+      /// 获取文件夹内容
+
+    }
+
+    print('dir' + dir);
+    return dir;
   }
 
   List fileList = [];
+  String rootDir = '';
+  String currentDir = '';
 
   @override
   void initState() {
-    _getLocalFile().then((value) {
+    _getLocalFile("").then((value) {
       setState(() {
         print(value);
-        fileList = value as List;
+        List strs = value.split("/");
+        fileList = [strs.last];
+        print(fileList);
       });
     });
     // TODO: implement initState
@@ -55,7 +73,7 @@ class _FileListPageState extends State<FileListPage> {
           title: Text(widget.title),
         ),
         body: FutureBuilder(
-          future: _getLocalFile(),
+          future: _getLocalFile(""),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Column(
@@ -80,7 +98,7 @@ class FileListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(720),
+      height: ScreenUtil.screenHeight,
       width: ScreenUtil.screenWidth,
       child: ListView(
         padding: const EdgeInsets.all(8),

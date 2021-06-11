@@ -83,12 +83,12 @@ class _MyHomePageState extends State<MyHomePage> {
               'Finds all duplicate files which have the same names',
               textAlign: TextAlign.center,
             ),
-            OutlineButton(
+            OutlinedButton(
               onPressed: _chooseTargetFloder,
               child: Text(
                   "Please choose a target floder"), // Icon(Icons.attach_file),
             ),
-            OutlineButton(
+            OutlinedButton(
               onPressed: _checkAction,
               child: Text("check"),
             ),

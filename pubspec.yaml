@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   path_provider: ^1.6.9
   # add flutter_ScreenUtil
-  flutter_screenutil: ^0.5.3
+  flutter_screenutil: ^2.2.0
   
 dev_dependencies:
   flutter_test:

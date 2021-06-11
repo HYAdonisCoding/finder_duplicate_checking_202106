@@ -16,9 +16,9 @@ class _IndexPageState extends State<IndexPage> {
   var currentPage;
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.home), title: Text('Home')),
+        icon: Icon(CupertinoIcons.home), label: 'Home'),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.profile_circled), title: Text('Mine')),
+        icon: Icon(CupertinoIcons.profile_circled), label: 'Mine'),
   ];
   final List<Widget> tabBodies = [HomePage(), MinePage()];
   @override
@@ -29,7 +29,7 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+    ScreenUtil.init(context);
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       bottomNavigationBar: BottomNavigationBar(
